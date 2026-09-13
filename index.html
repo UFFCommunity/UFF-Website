@@ -3,38 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Website</title>
+    <title>UFF - Unified Federal Forces | Naramo West Noobia</title>
     <style>
+        :root {
+            --bg-dark: #0f1611;      /* Extrem dunkles Militär-Grün */
+            --hud-green: #7ca85c;    /* Das Hellgrün aus dem Icon */
+            --hud-yellow: #eac545;   /* Das Gelb aus dem Icon */
+            --hud-blue: #1c73b8;     /* Das Blau aus dem Icon */
+            --hud-border: #2e3d28;   /* Dunkleres Olivgrün für Rahmen */
+            --text-light: #d1dcd0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace; /* Taktischer Terminal-Look */
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            background-image: 
+                linear-gradient(rgba(124, 168, 92, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124, 168, 92, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px; /* Dezentes Gittermuster im Hintergrund */
+            overflow-x: hidden;
+        }
+
+        /* Scanline-Effekt für alte Röhrenmonitore */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            border-bottom: 2px solid var(--hud-border);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 22, 17, 0.9);
+            position: relative;
+        }
+
+        /* Die 3 Farbbalken aus deinem Factions-Icon als Header-Dekoration */
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--hud-yellow) 33%, var(--hud-blue) 33%, var(--hud-blue) 66%, var(--hud-green) 66%);
+        }
+
+        .faction-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--hud-green);
+            transform: rotate(45deg); /* Diamantform wie das Icon */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            background: rgba(124, 168, 92, 0.2);
         }
-        .container {
+
+        .logo-placeholder span {
+            transform: rotate(-45deg);
+            font-weight: bold;
+            color: var(--hud-yellow);
+            font-size: 12px;
+        }
+
+        .nav-links a {
+            color: var(--hud-green);
+            text-decoration: none;
+            margin-left: 20px;
+            border: 1px solid transparent;
+            padding: 5px 10px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--hud-yellow);
+            border-color: var(--hud-yellow);
+            background: rgba(234, 197, 69, 0.05);
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 100px 20px;
+            border-bottom: 1px solid var(--hud-border);
         }
-        h1 {
-            color: #0066cc;
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--hud-yellow);
+            text-shadow: 0 0 10px rgba(234, 197, 69, 0.5);
             margin-bottom: 10px;
         }
-        p {
-            color: #666;
+
+        .hero h2 {
+            font-size: 1.2rem;
+            color: var(--hud-blue);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .terminal-box {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--hud-green);
+            border-left: 4px solid var(--hud-green);
+            padding: 20px;
+            text-align: left;
+            margin-bottom: 40px;
+            box-shadow: 0 0 15px rgba(124, 168, 92, 0.1);
+        }
+
+        .terminal-header {
+            color: var(--hud-green);
+            border-bottom: 1px solid var(--hud-border);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-join {
+            background: transparent;
+            color: var(--hud-green);
+            border: 2px solid var(--hud-green);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(124, 168, 92, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-join:hover {
+            color: var(--bg-dark);
+            background: var(--hud-green);
+            box-shadow: 0 0 20px var(--hud-green);
+            transform: scale(1.05);
+        }
+
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: rgba(20, 30, 22, 0.5);
+            border: 1px solid var(--hud-border);
+            padding: 20px;
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 10px; height: 10px;
+            border-top: 2px solid var(--hud-blue);
+            border-left: 2px solid var(--hud-blue);
+        }
+
+        .card h3 {
+            color: var(--hud-green);
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--hud-border);
+            padding-bottom: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #556652;
+            border-top: 1px solid var(--hud-border);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hallo Welt</h1>
-        <p>Diese Website wurde erfolgreich auf Render bereitgestellt.</p>
-    </div>
+
+    <header>
+        <div class="faction-title">
+            <div class="logo-placeholder" style="overflow:hidden;">
+		<img src="logo.png" alt="UFF Logo" style="width: 100%; height: 100%; object-fit: cover; transform: rotate(-45deg) scale(1.4);">
+	    </div> 
+            <div>
+                <h2>UNIFIED FEDERAL FORCES</h2>
+                <span style="font-size: 10px; color: var(--hud-green);">SECURE // CONTAIN // CONQUER</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="#about">STATUS</a>
+            <a href="#divisions">DIVISIONS</a>
+            <a href="#roblox">ROBLOX GROUP</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>NARAMO NUCLEAR PLANT</h1>
+        <h2>WEST NOOBIAN SECTOR // OPERATION: UFF BARRICADE</h2>
+        
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <span>SYSTEM_LOG: TERMINAL_ACTIVE</span>
+                <span>SECURE_CONNECTION_ESTABLISHED</span>
+            </div>
+            <p style="color: var(--hud-yellow); margin-bottom: 10px;">> ACHTUNG SOLATEN & REKRUTEN:</p>
+            <p>Die Unified Federal Forces (UFF) halten die strategische Vormachtstellung über den West Noobian Nuklearkomplex. Unsere Mission ist absolut: Schutz des Reaktorkerns, Eliminierung von feindlichen Saboteuren und die dauerhafte Sicherung der Nuklearanlage.</p>
+            <br>
+            <p style="color: var(--hud-blue);">> STRATEGISCHER STATUS: BEREITSCHAFTSTUFE ROT</p>
+        </div>
+
+        <!-- Tausche den Link unten gegen deine echte Roblox-Gruppe oder Discord aus! -->
+        <button class="btn-join" onclick="window.open('https://roblox.com', '_blank')">Gruppe beitreten</button>
+    </section>
+
+    <section class="grid-section" id="divisions">
+        <div class="card">
+            <h3>[01] REAKTOR-SCHUTZ</h3>
+            <p>Die primäre Verteidigungslinie direkt am Kern der Naramo Nuclear Plant. Schwer gepanzert und bereit für jeden Infiltrationsversuch.</p>
+        </div>
+        <div class="card">
+            <h3>[02] TAKTISCHE AUFKLÄRUNG</h3>
+            <p>Überwachung der westlichen Grenzen von Noobia. Schnelle Interventions-Teams, die Bedrohungen ausschalten, bevor sie das Werk erreichen.</p>
+        </div>
+        <div class="card">
+            <h3>[03] NUKLEAR-INGENIEURE</h3>
+            <p>Verantwortlich für die Systemstabilität und Eindämmung im Falle eines kritischen Systemfehlers oder feindlicher Sabotageakte.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 UNIFIED FEDERAL FORCES [UFF]. ALL RIGHTS RESERVED.</p>
+        <p style="font-size: 9px; margin-top: 5px;">AUTHORIZED BY WEST NOOBIAN SECTOR COMMAND.</p>
+    </footer>
+
 </body>
 </html>
