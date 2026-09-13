@@ -6,61 +6,47 @@
     <title>UFF - Unified Federal Forces | Naramo West Noobia</title>
     <style>
         :root {
-            --bg-dark: #0f1611;      /* Deep military green */
-            --hud-green: #7ca85c;    /* Light green from icon */
-            --hud-yellow: #eac545;   /* Yellow from icon */
-            --hud-blue: #1c73b8;     /* Blue from icon */
-            --hud-border: #2e3d28;   /* Dark olive for borders */
-            --text-light: #d1dcd0;
+            --bg-light: #f4f7f5;      /* Helles, cleanes Grau-Grün */
+            --panel-white: #ffffff;   /* Saubere weiße Karten */
+            --hud-green: #7ca85c;    /* Grün aus dem Icon */
+            --hud-yellow: #eac545;   /* Gelb aus dem Icon */
+            --hud-blue: #1c73b8;     /* Blau aus dem Icon */
+            --text-dark: #2b3a2e;    /* Gut lesbarer, dunkler Text */
+            --text-muted: #6b7c6e;
+            --border-color: #e0e6e1;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Courier New', Courier, monospace; /* Tactical terminal font */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Moderner, cleaner Font */
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            background-image: 
-                linear-gradient(rgba(124, 168, 92, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(124, 168, 92, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px; /* Subtle grid background */
-            overflow-x: hidden;
-        }
-
-        /* Scanline effect for classic military monitors */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 9999;
-            background-size: 100% 4px, 6px 100%;
-            pointer-events: none;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
         }
 
         header {
-            border-bottom: 2px solid var(--hud-border);
-            padding: 20px;
+            background: var(--panel-white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 22, 17, 0.9);
             position: relative;
         }
 
-        /* Color bars from your emblem */
+        /* Elegante, dünne Farbstufen aus deinem Emblem */
         header::after {
             content: "";
             position: absolute;
-            bottom: -2px;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, var(--hud-yellow) 33%, var(--hud-blue) 33%, var(--hud-blue) 66%, var(--hud-green) 66%);
         }
 
@@ -70,138 +56,150 @@
             gap: 15px;
         }
 
-        .logo-placeholder {
-            width: 50px;
-            height: 50px;
+        .logo-container {
+            width: 45px;
+            height: 45px;
             border: 2px solid var(--hud-green);
-            transform: rotate(45deg); /* Diamond shape like the icon */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(124, 168, 92, 0.2);
+            transform: rotate(45deg); /* Diamantform passend zum Icon */
             overflow: hidden;
+            background: #fff;
         }
 
-        .nav-links a {
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: rotate(-45deg) scale(1.4);
+        }
+
+        .faction-title h2 {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+        }
+
+        .faction-title span {
+            font-size: 0.8rem;
             color: var(--hud-green);
-            text-decoration: none;
-            margin-left: 20px;
-            border: 1px solid transparent;
-            padding: 5px 10px;
-            transition: all 0.3s;
+            font-weight: 600;
         }
 
-        .nav-links a:hover {
-            color: var(--hud-yellow);
-            border-color: var(--hud-yellow);
-            background: rgba(234, 197, 69, 0.05);
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--hud-blue);
         }
 
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            max-width: 900px;
+            margin: 80px auto 40px auto;
             text-align: center;
-            padding: 100px 20px;
-            border-bottom: 1px solid var(--hud-border);
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            color: var(--hud-yellow);
-            text-shadow: 0 0 10px rgba(234, 197, 69, 0.5);
+            font-size: 2.5rem;
+            color: var(--text-dark);
             margin-bottom: 10px;
+            font-weight: 800;
         }
 
         .hero h2 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--hud-blue);
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-        }
-
-        .terminal-box {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid var(--hud-green);
-            border-left: 4px solid var(--hud-green);
-            padding: 20px;
-            text-align: left;
-            margin-bottom: 40px;
-            box-shadow: 0 0 15px rgba(124, 168, 92, 0.1);
-        }
-
-        .terminal-header {
-            color: var(--hud-green);
-            border-bottom: 1px solid var(--hud-border);
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .btn-join {
-            background: transparent;
-            color: var(--hud-green);
-            border: 2px solid var(--hud-green);
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0 0 10px rgba(124, 168, 92, 0.2);
-            transition: all 0.3s;
+            margin-bottom: 30px;
         }
 
-        .btn-join:hover {
-            color: var(--bg-dark);
+        .intro-box {
+            background: var(--panel-white);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .intro-box h3 {
+            color: var(--hud-yellow);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-discord {
+            display: inline-block;
             background: var(--hud-green);
-            box-shadow: 0 0 20px var(--hud-green);
-            transform: scale(1.05);
+            color: white;
+            text-decoration: none;
+            padding: 14px 35px;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(124, 168, 92, 0.3);
+            transition: all 0.2s;
+        }
+
+        .btn-discord:hover {
+            background: #6b964d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(124, 168, 92, 0.4);
         }
 
         .grid-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
+            gap: 25px;
+            max-width: 1000px;
             margin: 60px auto;
             padding: 0 20px;
         }
 
         .card {
-            background: rgba(20, 30, 22, 0.5);
-            border: 1px solid var(--hud-border);
-            padding: 20px;
-            position: relative;
+            background: var(--panel-white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
         }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 10px; height: 10px;
-            border-top: 2px solid var(--hud-blue);
-            border-left: 2px solid var(--hud-blue);
+        .card:hover {
+            transform: translateY(-3px);
         }
 
-        .card h3 {
-            color: var(--hud-green);
-            margin-bottom: 10px;
-            border-bottom: 1px dashed var(--hud-border);
-            padding-bottom: 5px;
+        .card h4 {
+            color: var(--hud-blue);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         footer {
             text-align: center;
             padding: 40px;
-            font-size: 0.8rem;
-            color: #556652;
-            border-top: 1px solid var(--hud-border);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            background: var(--panel-white);
+            margin-top: 80px;
         }
     </style>
 </head>
@@ -209,57 +207,52 @@
 
     <header>
         <div class="faction-title">
-            <div class="logo-placeholder">
-                <img src="logo.png" alt="UFF Logo" style="width: 100%; height: 100%; object-fit: cover; transform: rotate(-45deg) scale(1.4);">
+            <div class="logo-container">
+                <img src="logo.png" alt="UFF Logo">
             </div>
             <div>
                 <h2>UNIFIED FEDERAL FORCES</h2>
-                <span style="font-size: 10px; color: var(--hud-green);">SECURE // CONTAIN // CONQUER</span>
+                <span>OPERATION: OVERTAKE // WEST NOOBIA</span>
             </div>
         </div>
-        <nav class="nav-links">
-            <a href="#status">STATUS</a>
-            <a href="#divisions">DIVISIONS</a>
+        <nav>
+            <a href="#briefing">BRIEFING</a>
+            <a href="#tactics">TACTICS</a>
         </nav>
     </header>
 
-    <section class="hero" id="status">
-        <h1>NARAMO NUCLEAR PLANT</h1>
-        <h2>WEST NOOBIAN SECTOR // OPERATION: UFF BARRICADE</h2>
-        
-        <div class="terminal-box">
-            <div class="terminal-header">
-                <span>SYSTEM_LOG: TERMINAL_ACTIVE</span>
-                <span>SECURE_CONNECTION_ESTABLISHED</span>
+    <main>
+        <section class="hero" id="briefing">
+            <h1>NARAMO NUCLEAR PLANT</h1>
+            <h2>Infiltration & Strike Operations</h2>
+            
+            <div class="intro-box">
+                <h3>> Mission Objective</h3>
+                <p>The Unified Federal Forces (UFF) are moving out. Our target is the Naramo Nuclear Plant complex in the West Noobian Sector. We are not here to stand guard—our squads are organized to execute highly coordinated raids, breach the compound's defenses, and seize full control of the core from the inside out.</p>
             </div>
-            <p style="color: var(--hud-yellow); margin-bottom: 10px;">> ATTENTION SOLDIERS & RECRUITS:</p>
-            <p>The Unified Federal Forces (UFF) hold the ultimate strategic dominance over the West Noobian nuclear complex. Our mission is absolute: Protect the core, eliminate enemy saboteurs, and enforce permanent security over the facility.</p>
-            <br>
-            <p style="color: var(--hud-blue);">> STRATEGIC THREAT LEVEL: DEFCON 1</p>
-        </div>
 
-        <!-- Discord Server Link integrated here -->
-        <button class="btn-join" onclick="window.open('https://discord.gg/dtk8HJfhz2', '_blank')">Join Comms (Discord)</button>
-    </section>
+            <!-- Discord Server Link -->
+            <a href="https://discord.gg" target="_blank" class="btn-discord">Join Communications (Discord)</a>
+        </section>
 
-    <section class="grid-section" id="divisions">
-        <div class="card">
-            <h3>REACTOR DEFENSE</h3>
-            <p>The primary defensive perimeter guarding the Naramo nuclear core. Heavily armored and highly trained to repel any infiltration attempts.</p>
-        </div>
-        <div class="card">
-            <h3>TACTICAL RECON</h3>
-            <p>Patrolling the dangerous outer borders of West Noobia. High-mobility strike teams deploying to neutralize active threats before they reach the facility.</p>
-        </div>
-        <div class="card">
-            <h3>NUCLEAR ENG</h3>
-            <p>Responsible for reactor stability, grid maintenance, and technical containment during critical alerts or hostile sabotage events.</p>
-        </div>
-    </section>
+        <section class="grid-section" id="tactics">
+            <div class="card">
+                <h4><span>//</span> BREACH & ENTRY</h4>
+                <p>Specialized frontline units focused on bypassing the outer gates of the plant. Fast, aggressive pushes to overwhelm the station's security grid.</p>
+            </div>
+            <div class="card">
+                <h4><span>//</span> CORE SABOTAGE</h4>
+                <p>Tactical teams tasked with navigating the interior corridors to compromise the reactor systems and secure the main terminal zones.</p>
+            </div>
+            <div class="card">
+                <h4><span>//</span> FLANK PATROLS</h4>
+                <p>Keeping the surrounding West Noobian roads clear. Intercepting enemy reinforcements before they can secure the facility lines.</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 UNIFIED FEDERAL FORCES [UFF]. ALL RIGHTS RESERVED.</p>
-        <p style="font-size: 9px; margin-top: 5px;">AUTHORIZED BY WEST NOOBIAN SECTOR COMMAND.</p>
+        <p>&copy; 2026 Unified Federal Forces [UFF]. Developed for West Noobian Combat Operations.</p>
     </footer>
 
 </body>
