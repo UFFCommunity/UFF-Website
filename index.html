@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UFF - Unified Federal Forces | Naramo West Noobia</title>
     <style>
         :root {
-            --bg-dark: #0f1611;      /* Extrem dunkles Militär-Grün */
-            --hud-green: #7ca85c;    /* Das Hellgrün aus dem Icon */
-            --hud-yellow: #eac545;   /* Das Gelb aus dem Icon */
-            --hud-blue: #1c73b8;     /* Das Blau aus dem Icon */
-            --hud-border: #2e3d28;   /* Dunkleres Olivgrün für Rahmen */
+            --bg-dark: #0f1611;      /* Deep military green */
+            --hud-green: #7ca85c;    /* Light green from icon */
+            --hud-yellow: #eac545;   /* Yellow from icon */
+            --hud-blue: #1c73b8;     /* Blue from icon */
+            --hud-border: #2e3d28;   /* Dark olive for borders */
             --text-light: #d1dcd0;
         }
 
@@ -18,7 +18,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Courier New', Courier, monospace; /* Taktischer Terminal-Look */
+            font-family: 'Courier New', Courier, monospace; /* Tactical terminal font */
         }
 
         body {
@@ -27,11 +27,11 @@
             background-image: 
                 linear-gradient(rgba(124, 168, 92, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(124, 168, 92, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px; /* Dezentes Gittermuster im Hintergrund */
+            background-size: 20px 20px; /* Subtle grid background */
             overflow-x: hidden;
         }
 
-        /* Scanline-Effekt für alte Röhrenmonitore */
+        /* Scanline effect for classic military monitors */
         body::before {
             content: " ";
             display: block;
@@ -53,7 +53,7 @@
             position: relative;
         }
 
-        /* Die 3 Farbbalken aus deinem Factions-Icon als Header-Dekoration */
+        /* Color bars from your emblem */
         header::after {
             content: "";
             position: absolute;
@@ -74,18 +74,12 @@
             width: 50px;
             height: 50px;
             border: 2px solid var(--hud-green);
-            transform: rotate(45deg); /* Diamantform wie das Icon */
+            transform: rotate(45deg); /* Diamond shape like the icon */
             display: flex;
             justify-content: center;
             align-items: center;
             background: rgba(124, 168, 92, 0.2);
-        }
-
-        .logo-placeholder span {
-            transform: rotate(-45deg);
-            font-weight: bold;
-            color: var(--hud-yellow);
-            font-size: 12px;
+            overflow: hidden;
         }
 
         .nav-links a {
@@ -215,22 +209,21 @@
 
     <header>
         <div class="faction-title">
-            <div class="logo-placeholder" style="overflow:hidden;">
-		<img src="logo.png" alt="UFF Logo" style="width: 100%; height: 100%; object-fit: cover; transform: rotate(-45deg) scale(1.4);">
-	    </div> 
+            <div class="logo-placeholder">
+                <img src="logo.png" alt="UFF Logo" style="width: 100%; height: 100%; object-fit: cover; transform: rotate(-45deg) scale(1.4);">
+            </div>
             <div>
                 <h2>UNIFIED FEDERAL FORCES</h2>
                 <span style="font-size: 10px; color: var(--hud-green);">SECURE // CONTAIN // CONQUER</span>
             </div>
         </div>
         <nav class="nav-links">
-            <a href="#about">STATUS</a>
+            <a href="#status">STATUS</a>
             <a href="#divisions">DIVISIONS</a>
-            <a href="#roblox">ROBLOX GROUP</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="status">
         <h1>NARAMO NUCLEAR PLANT</h1>
         <h2>WEST NOOBIAN SECTOR // OPERATION: UFF BARRICADE</h2>
         
@@ -239,28 +232,28 @@
                 <span>SYSTEM_LOG: TERMINAL_ACTIVE</span>
                 <span>SECURE_CONNECTION_ESTABLISHED</span>
             </div>
-            <p style="color: var(--hud-yellow); margin-bottom: 10px;">> ACHTUNG SOLATEN & REKRUTEN:</p>
-            <p>Die Unified Federal Forces (UFF) halten die strategische Vormachtstellung über den West Noobian Nuklearkomplex. Unsere Mission ist absolut: Schutz des Reaktorkerns, Eliminierung von feindlichen Saboteuren und die dauerhafte Sicherung der Nuklearanlage.</p>
+            <p style="color: var(--hud-yellow); margin-bottom: 10px;">> ATTENTION SOLDIERS & RECRUITS:</p>
+            <p>The Unified Federal Forces (UFF) hold the ultimate strategic dominance over the West Noobian nuclear complex. Our mission is absolute: Protect the core, eliminate enemy saboteurs, and enforce permanent security over the facility.</p>
             <br>
-            <p style="color: var(--hud-blue);">> STRATEGISCHER STATUS: BEREITSCHAFTSTUFE ROT</p>
+            <p style="color: var(--hud-blue);">> STRATEGIC THREAT LEVEL: DEFCON 1</p>
         </div>
 
-        <!-- Tausche den Link unten gegen deine echte Roblox-Gruppe oder Discord aus! -->
-        <button class="btn-join" onclick="window.open('https://roblox.com', '_blank')">Gruppe beitreten</button>
+        <!-- Discord Server Link integrated here -->
+        <button class="btn-join" onclick="window.open('https://discord.gg/dtk8HJfhz2', '_blank')">Join Comms (Discord)</button>
     </section>
 
     <section class="grid-section" id="divisions">
         <div class="card">
-            <h3>[01] REAKTOR-SCHUTZ</h3>
-            <p>Die primäre Verteidigungslinie direkt am Kern der Naramo Nuclear Plant. Schwer gepanzert und bereit für jeden Infiltrationsversuch.</p>
+            <h3>REACTOR DEFENSE</h3>
+            <p>The primary defensive perimeter guarding the Naramo nuclear core. Heavily armored and highly trained to repel any infiltration attempts.</p>
         </div>
         <div class="card">
-            <h3>[02] TAKTISCHE AUFKLÄRUNG</h3>
-            <p>Überwachung der westlichen Grenzen von Noobia. Schnelle Interventions-Teams, die Bedrohungen ausschalten, bevor sie das Werk erreichen.</p>
+            <h3>TACTICAL RECON</h3>
+            <p>Patrolling the dangerous outer borders of West Noobia. High-mobility strike teams deploying to neutralize active threats before they reach the facility.</p>
         </div>
         <div class="card">
-            <h3>[03] NUKLEAR-INGENIEURE</h3>
-            <p>Verantwortlich für die Systemstabilität und Eindämmung im Falle eines kritischen Systemfehlers oder feindlicher Sabotageakte.</p>
+            <h3>NUCLEAR ENG</h3>
+            <p>Responsible for reactor stability, grid maintenance, and technical containment during critical alerts or hostile sabotage events.</p>
         </div>
     </section>
 
