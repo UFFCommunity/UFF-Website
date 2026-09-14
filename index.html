@@ -174,21 +174,18 @@
   }
 
   /* ---------- Stats ---------- */
-  .stats{
+  /* ---------- Banner ---------- */
+  .banner{
     max-width: 1240px;
     margin: 0 auto;
-    padding: 44px 40px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-bottom: 1px solid var(--line);
+    padding: 0 40px 80px;
   }
-  .stat{
-    padding: 0 24px;
-    border-left: 1px solid var(--line);
+  .banner img{
+    width: 100%;
+    display:block;
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--orange);
   }
-  .stat:first-child{ border-left:none; padding-left:0; }
-  .stat .n{ font-family: var(--font-display); font-size: 2rem; color: var(--text); }
-  .stat .l{ font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; }
 
   /* ---------- Sections ---------- */
   section{ max-width: 1240px; margin: 0 auto; padding: 80px 40px; }
@@ -196,6 +193,13 @@
   .section-head{ margin-bottom: 48px; max-width: 60ch; }
   .section-head h2{ font-size: 2rem; }
   .section-head p{ color: var(--text-dim); margin-top: 10px; }
+
+  /* ---------- Field photo ---------- */
+  .field-photo{
+    margin-top: 40px;
+    border: 1px solid var(--line);
+  }
+  .field-photo img{ width:100%; display:block; }
 
   /* ---------- Divisions ---------- */
   .divisions{
@@ -253,13 +257,16 @@
   .footer-cta{
     max-width: 1240px;
     margin: 0 auto 60px;
-    padding: 64px 40px;
-    background: var(--card);
+    padding: 80px 40px;
     border: 1px solid var(--line);
     border-top: 2px solid var(--orange);
     text-align:center;
+    position:relative;
+    background-image: linear-gradient(180deg, rgba(13,12,14,0.55), rgba(13,12,14,0.9)), url('liberate-the-east.png');
+    background-size: cover;
+    background-position: center;
   }
-  .footer-cta h2{ font-size: 2rem; margin-bottom: 12px; }
+  .footer-cta h2{ font-size: 2rem; margin-bottom: 12px; color: var(--text); }
   .footer-cta p{ color: var(--text-dim); margin-bottom: 28px; }
 
   footer{
@@ -273,8 +280,6 @@
   @media (max-width: 860px){
     .hero{ grid-template-columns: 1fr; }
     nav{ display:none; }
-    .stats{ grid-template-columns: repeat(2, 1fr); }
-    .stat:nth-child(3){ border-left:none; padding-left:0; margin-top:20px; }
   }
 </style>
 </head>
@@ -291,6 +296,10 @@
     <a href="#join">Requirements</a>
   </nav>
 </header>
+
+<div class="banner">
+  <img src="uff-banner.png" alt="UFF operator holding position">
+</div>
 
 <section class="hero" id="about">
   <div>
@@ -309,12 +318,6 @@
     <div class="status"><span class="dot"></span>Status: getting ready to move</div>
   </div>
 </section>
-
-<div class="stats">
-  <div class="stat"><div class="n">2</div><div class="l">active units</div></div>
-  <div class="stat"><div class="n">24/7</div><div class="l">always moving</div></div>
-  <div class="stat"><div class="n">1</div><div class="l">target</div></div>
-</div>
 
 <section id="divisions">
   <div class="section-head">
@@ -336,6 +339,9 @@
       <h3>19th Special Operation Detachment (SOD)</h3>
       <p>Smaller unit. They handle the recon and sabotage stuff, the parts you're not supposed to notice.</p>
     </div>
+  </div>
+  <div class="field-photo">
+    <img src="uff-squad.png" alt="UFF squad lined up in front of the armored convoy">
   </div>
 </section>
 
