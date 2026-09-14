@@ -88,6 +88,11 @@
     border-bottom: 1px solid var(--line);
   }
 
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(16px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
   .eyebrow{
     display:flex;
     align-items:center;
@@ -96,6 +101,8 @@
     font-weight: 600;
     color: var(--orange);
     margin-bottom: 20px;
+    opacity:0;
+    animation: rise 0.6s ease-out 0.05s forwards;
   }
   .eyebrow::before{
     content:"";
@@ -107,6 +114,8 @@
     font-size: clamp(2.6rem, 5vw, 4rem);
     line-height: 1.05;
     color: var(--text);
+    opacity:0;
+    animation: rise 0.6s ease-out 0.15s forwards;
   }
   .hero h1 span{ color: var(--orange); }
 
@@ -115,6 +124,8 @@
     font-size: 1.08rem;
     color: var(--text-dim);
     max-width: 48ch;
+    opacity:0;
+    animation: rise 0.6s ease-out 0.25s forwards;
   }
 
   .hero .buttons{
@@ -122,6 +133,8 @@
     display:flex;
     gap: 14px;
     flex-wrap:wrap;
+    opacity:0;
+    animation: rise 0.6s ease-out 0.35s forwards;
   }
 
   .btn{
@@ -132,8 +145,10 @@
     border: 1px solid transparent;
     cursor:pointer;
     clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
   }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn:active{ transform: translateY(0); }
 
   .btn-primary{ background: var(--orange); color: #1a0d07; }
   .btn-primary:hover{ background: var(--amber); }
@@ -146,6 +161,8 @@
     border: 1px solid var(--line);
     border-top: 2px solid var(--orange);
     padding: 30px;
+    opacity:0;
+    animation: rise 0.6s ease-out 0.45s forwards;
   }
   .hero-panel .tag{
     font-size: 0.78rem;
@@ -171,6 +188,12 @@
     width: 8px; height: 8px;
     background: var(--orange);
     flex-shrink:0;
+    border-radius:50%;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; transform: scale(1); }
+    50%{ opacity:0.4; transform: scale(0.75); }
   }
 
   /* ---------- Stats ---------- */
@@ -221,9 +244,9 @@
   .division{
     background: var(--bg-soft);
     padding: 32px;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
-  .division:hover{ background: var(--card); }
+  .division:hover{ background: var(--card); transform: translateY(-4px); }
 
   .division .icon{
     width: 40px; height: 40px;
