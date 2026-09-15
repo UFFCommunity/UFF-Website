@@ -61,9 +61,15 @@
   .brand .mark img{ height:100%; width:auto; display:block; }
   .brand span{
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight:700;
     letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .brand span .full{
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
   }
 
   nav{ display:flex; gap: 32px; }
@@ -320,6 +326,10 @@
     .hero{ grid-template-columns: 1fr; }
     nav{ display:none; }
   }
+
+  @media (max-width: 480px){
+    .brand span .full{ display:none; }
+  }
 </style>
 </head>
 <body>
@@ -327,7 +337,7 @@
 <header>
   <div class="brand">
     <div class="mark"><img src="UFF_Icon.png" alt="UFF emblem"></div>
-    <span>UFF</span>
+    <span>UFF <span class="full">| Unified Federal Forces</span></span>
   </div>
   <nav>
     <a href="#about">About</a>
